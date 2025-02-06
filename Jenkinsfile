@@ -2,13 +2,13 @@ pipeline {
     agent any
 
     tools {
-        nodejs "NodeJS 18"
+        nodejs "NodeJS 23"
     }
 
     stages {
         stage('Checkout Code') {
             steps {
-                git 'https://github.com/your-username/your-repository.git'
+                git 'https://github.com/Seyi23nova/iMessengerBE.git'
             }
         }
 
