@@ -26,7 +26,7 @@ const PORT = process.env.PORT || 3000
 mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
      .then(() => {
           const server = app.listen(PORT, () => {
-              console.log(`server running on port ${PORT}`)
+              console.log(`server is running on port ${PORT}`)
           })
 
           return server
