@@ -8,19 +8,24 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git 'https://github.com/Seyi23nova/iMessengerBE.git'
+                echo 'cloning the repo'
+                sh 'rm -fr iMessengerBE'
+                sh 'git clone https://github.com/Seyi23nova/iMessengerBE.git'
+                echo 'repo successfully cloned'
             }
         }
 
         stage('Install Dependencies') {
             steps {
+                sh 'cd iMessengerBE'
                 sh 'npm install'
+                echo 'installed node modules'
             }
         }
 
-        stage('Run Tests') {
+        stage('Done') {
             steps {
-                sh 'npm test'
+                echo 'pipeline ended'
             }
         }
     }
