@@ -11,7 +11,7 @@ pipeline {
             }
         }
 
-        stage('Install Dependencies') {
+        stage('Install Code Dependencies') {
             steps {
                 sh 'cd iMessengerBE'
                 sh 'npm install'
