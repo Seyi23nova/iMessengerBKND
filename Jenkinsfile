@@ -1,28 +1,17 @@
 pipeline {
-    agent any
-
+    agent any 
     stages {
-        stage('Checkout Code') {
+        stage('Clone the repo') {
             steps {
-                echo 'cloning the repo'
-                sh 'rm -fr iMessengerBE'
-                sh 'git clone https://github.com/Seyi23nova/iMessengerBE.git'
-                echo 'repo successfully cloned'
+                echo 'clone the repo'
+                sh 'rm -fr webapp1'
+                sh 'git clone https://github.com/Seyi23nova/webapp1.git'
             }
         }
-
-        stage('Install Code Dependencies') {
-            steps {
-                sh 'cd iMessengerBE'
-                sh 'npm install'
-                echo 'installed node modules'
-            }
-        }
-
         stage('Done') {
             steps {
-                echo 'pipeline ended'
+                echo 'Pipeline completed'
             }
-        }
+        } 
     }
 }
