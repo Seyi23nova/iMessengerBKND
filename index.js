@@ -6,7 +6,6 @@ import multer from 'multer'
 import authRoutes from './routes/auth.js'
 import refreshTokenRoutes from './routes/refreshToken.js'
 import userRoutes from './routes/users.js'
-import { Server } from "socket.io";
 
 const app = express()
 
