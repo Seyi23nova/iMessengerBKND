@@ -1,19 +1,19 @@
-import express from 'express'
-import mongoose from 'mongoose'
-import cors from 'cors'
-import dotenv from 'dotenv'
-import multer from 'multer'
-import authRoutes from './routes/auth.js'
-import refreshTokenRoutes from './routes/refreshToken.js'
-import userRoutes from './routes/users.js'
+import express from 'express';
+import mongoose from 'mongoose';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import multer from 'multer';
+import authRoutes from './routes/auth.js';
+import refreshTokenRoutes from './routes/refreshToken.js';
+import userRoutes from './routes/users.js';
 
-const app = express()
+const app = express();
 
 const upload = multer({ dest: "uploads/" });
-app.use(upload.single("photo"))
-app.use(cors())
+app.use(upload.single("photo"));
+app.use(cors());
 
-dotenv.config()
+dotenv.config();
 
 app.use('/auth', authRoutes)
 app.use('/token', refreshTokenRoutes)
@@ -28,7 +28,6 @@ mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: tr
           const server = app.listen(PORT, () => {
               console.log(`server is running on port ${PORT}`)
           })
-
           return server
      }
 )
