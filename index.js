@@ -6,7 +6,6 @@ import multer from 'multer'
 import authRoutes from './routes/auth.js'
 import refreshTokenRoutes from './routes/refreshToken.js'
 import userRoutes from './routes/users.js'
-import { Server } from "socket.io";
 
 
 
@@ -31,26 +30,6 @@ mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: tr
           const server = app.listen(PORT, () => {
               console.log(`The server is running on port ${PORT}`)
           })
-
-          const io = new Server(server)
-
-          let socketsConnected = new Set()
-
-          io.on('connection', onConnected)
-
-          function onConnected(socket){
-               console.log(socket.id)
-               socketsConnected.add(socket.id)
-
-               io.emit('clients-total', socketsConnected.size)
-
-               socket.on('disconnect', () => {
-                    console.log("socket disconnected", socket.id)
-                    socketsConnected.delete(socket.id)
-                    io.emit('clients-total', socketsConnected.size)
-               })
-          }
-
 
           return server
      }
