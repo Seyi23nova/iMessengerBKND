@@ -1,7 +1,7 @@
-import mongoose from 'mongoose'
-import bcrypt from 'bcryptjs'
-import User from '../../models/user.js'
-import Network from '../../models/network.js'
+import mongoose from 'mongoose';
+import bcrypt from 'bcryptjs';
+import User from '../../models/user.js';
+import Network from '../../models/network.js';
 
 import { profileSchema } from '../../models/profile.js'
 const Profile = mongoose.model("Profile", profileSchema)

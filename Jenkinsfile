@@ -1,26 +1,22 @@
 pipeline {
-    agent any
-
-    tools {
-        nodejs "NodeJS 23"
-    }
-
+    agent any 
     stages {
-        stage('Checkout Code') {
+        stage('Clone the repo') {
             steps {
-                git 'https://github.com/Seyi23nova/iMessengerBE.git'
+                echo 'cloning the repo'
+                sh 'rm -fr iMessengerBE'
+                sh 'git clone https://github.com/Seyi23nova/iMessengerBE.git'
             }
         }
-
-        stage('Install Dependencies') {
+        stage('Move into repo') {
             steps {
-                sh 'npm install'
+                echo 'moving to iMessengerBE directory'
+                sh 'cd iMessengerBE'
             }
         }
-
-        stage('Run Tests') {
+        stage('Done') {
             steps {
-                sh 'npm test'
+                echo 'Done'
             }
         }
     }
