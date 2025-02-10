@@ -21,7 +21,7 @@ app.use('/token', refreshTokenRoutes)
 app.use('/', userRoutes)
 
 const CONNECTION_URL = process.env.CONNECTION_URL
-const PORT = process.env.PORT || 443
+const PORT = process.env.PORT || 1337
 
 
 mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
