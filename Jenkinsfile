@@ -10,7 +10,7 @@ pipeline {
                 sshagent (credentials: ['backend']) {
                     sh """
                         ssh -o StrictHostKeyChecking=no ${SSH_USER}@${BACKEND_VM} \\
-                        'pkill -f "node index.js" || true && rm -rf iMessengerBKND'
+                        'rm -rf iMessengerBKND'
                     """
                 }
             }
