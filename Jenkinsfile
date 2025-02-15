@@ -10,7 +10,7 @@ pipeline {
                 sshagent (credentials: ['backend']) {
                     sh """
                         ssh -o StrictHostKeyChecking=no ${SSH_USER}@${BACKEND_VM} \\
-                        'cd iMessengerBKND && mkdir newFolder'
+                        'cd iMessengerBKND && git pull && npm install && pkill -f "node index.js" || true && nohup node index.js > output.log 2>&1 &'
                     """
                 }
             }
