@@ -1,22 +1,18 @@
 pipeline {
-    agent any 
+    agent any
+    environment {
+        BACKEND_VM = '52.146.20.251'
+        SSH_USER   = 'barnabas'
+    }
     stages {
-        stage('Clone the repo') {
+        stage('Deploy Backend') {
             steps {
-                echo 'cloning the repo'
-                sh 'rm -fr iMessengerBE'
-                sh 'git clone https://github.com/Seyi23nova/iMessengerBE.git'
-            }
-        }
-        stage('Move into repo') {
-            steps {
-                echo 'moving to iMessengerBE directory'
-                sh 'cd iMessengerBE'
-            }
-        }
-        stage('Done') {
-            steps {
-                echo 'Done'
+                sshagent (credentials: ['backend']) {
+                    sh """
+                        ssh -o StrictHostKeyChecking=no ${SSH_USER}@${BACKEND_VM} \\
+                        'cd iMessengerBKND && git pull && npm install -y && nohup node index.js > output.log 2>&1 &'
+                    """
+                }
             }
         }
     }
