@@ -8,8 +8,6 @@ import refreshTokenRoutes from './routes/refreshToken.js'
 import userRoutes from './routes/users.js'
 import messageRoutes from './routes/message.js'
 
-
-
 const app = express();
 
 const upload = multer({ dest: "uploads/" });
