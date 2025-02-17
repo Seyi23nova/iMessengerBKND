@@ -16,12 +16,9 @@ export const getMessages = async (req, res) => {
 
         const allMessages = [...sentByUser, ...sentByFriend]
 
-        console.log(allMessages)
-
         //sort messages by timestamp
         allMessages.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
 
-        console.log(allMessages)
 
         res.status(200).json({ allMessages })
 
