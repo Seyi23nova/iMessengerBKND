@@ -9,3 +9,6 @@ notifications id format:  orchestrator-action
     requestrejection - rejecting friend request
     unfriend - removing a friend
     chat - chatting with a friend
+
+
+cloud architecture is also in this folder
