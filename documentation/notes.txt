@@ -8,3 +8,4 @@ notifications id format:  orchestrator-action
     requestacceptance - accepting a friend request
     requestrejection - rejecting a friend request
     unfriend - removing a friend
+    chat - chatting with a friend
