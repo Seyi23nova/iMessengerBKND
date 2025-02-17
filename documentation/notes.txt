@@ -5,7 +5,7 @@ notifications id format:  orchestrator-action
    actions:
     friendrequest - sending a friend request to another user
     friendrevoke - revoking a friend request already sent to another user
-    requestacceptance - accepting a friend request
-    requestrejection - rejecting a friend request
+    requestacceptance - accepting friend request
+    requestrejection - rejecting friend request
     unfriend - removing a friend
     chat - chatting with a friend

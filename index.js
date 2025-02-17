@@ -10,7 +10,6 @@ import messageRoutes from './routes/message.js'
 
 const app = express();
 
-
 const upload = multer({ dest: "uploads/" });
 app.use(upload.single("photo"));
 app.use(cors());
