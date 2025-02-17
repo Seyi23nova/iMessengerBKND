@@ -22,7 +22,7 @@ pipeline {
                 sshagent (credentials: ['frontend']) {
                     sh """
                         ssh -o StrictHostKeyChecking=no ${SSH_USER}@${FRONTEND_VM} \\
-                        'cd /var/www/html && git pull && sudo systemctl restart apache2'
+                        'cd /var/www/html && git config --global --add safe.directory /var/www/html && git pull && sudo systemctl restart apache2'
                     """
                 }
             }
