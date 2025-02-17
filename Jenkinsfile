@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment {
         BACKEND_VM = '52.146.20.251'
+        FRONTEND_VM = '52.224.243.124'
         SSH_USER   = 'barnabas'
     }
     stages {
@@ -11,6 +12,17 @@ pipeline {
                     sh """
                         ssh -o StrictHostKeyChecking=no ${SSH_USER}@${BACKEND_VM} \\
                         'cd iMessengerBKND && git pull && npm install -y && nohup node index.js > output.log 2>&1 &'
+                    """
+                }
+            }
+        }
+
+        stage('Deploy Frontend') {
+            steps {
+                sshagent (credentials: ['frontend']) {
+                    sh """
+                        ssh -o StrictHostKeyChecking=no ${SSH_USER}@${FRONTEND_VM} \\
+                        'cd /var/www/html && git pull && sudo systemctl restart apache2'
                     """
                 }
             }
